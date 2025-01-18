@@ -5,6 +5,8 @@ import { test } from '@/api/login';
 import Button from 'primevue/button';
 import Drawer from 'primevue/drawer';
 import ModalSample from '@/components/modal/sample1023/ModalSample.vue';
+import axios from 'axios';
+
 const { aa } = history.state;
 const router = useRouter();
 const route = useRoute();
@@ -15,6 +17,12 @@ onMounted(() => {
 	console.log('이건가 ', aa);
 	const testResult = test();
 });
+const goTest = () => {
+	console.log('테스트버튼입니다.');
+	axios.get('/api/test').then(res => {
+		res.data;
+	});
+};
 const goToMain = () => {
 	console.log('router', router);
 	router.push({ name: 'main', params: { oops: 'oooooops' } });
@@ -36,6 +44,7 @@ const visible = ref(false);
 <template>
 	<section>
 		<div>로그인 화면입니다.{{ aa }}</div>
+		<button @click="goTest">테스트 호출해보기123123</button>
 		<ModalSample :isOpenModal="isOpenModal" />
 		<button @click="getModal">모달호출</button>
 		<div>
