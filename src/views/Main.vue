@@ -11,6 +11,7 @@ const store = useStore();
 const router = useRouter();
 const route = useRoute();
 const getSample = computed(() => store.getters['sample/getSample']);
+const getAlert = computed(() => store.getters['common/getAlert']);
 const modalopen = ref(false);
 watch(
 	() => route,
@@ -34,9 +35,13 @@ const goToModal = () => {
 	modalopen.value = !modalopen.value;
 	console.log('모달오픈', modalopen.value);
 };
+const goAlert = () => {
+	store.commit('common/setAlert', { state: true, message: '1.' });
+};
 </script>
 <template>
 	<section>
+		<v-btn @click="goAlert">알럿 호출</v-btn>
 		123{{ getSample }}
 		<input type="text" v-model="getSample" />
 		<div>메인 화면입니다.{{ route.params }}</div>
