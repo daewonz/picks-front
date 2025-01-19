@@ -3,7 +3,7 @@
 import { ref, watch, getCurrentInstance } from 'vue';
 import { createRouter } from 'vue-router';
 import { useRouter, useRoute } from 'vue-router';
-
+import Alert from './components/common/Alert.vue';
 const router = useRouter();
 const route = useRoute();
 import HelloWorld from './components/HelloWorld.vue';
@@ -15,20 +15,29 @@ const sampleClick = () => {
 		//router.push({ name: 'Login' });
 	});
 };
+const noHeader = ref(false);
+watch(route, () => {
+	route.meta.noHeader ? (noHeader.value = true) : (noHeader.value = false);
+	//noHeader.value = route.path === '/';
+});
 </script>
 
 <template>
 	<v-app>
 		<v-main>
-			<header>헤더입니다</header>
-			<section class="mainSection">
-				<section class="mainContainer">
-					<router-view />
-				</section>
+			<Alert />
+			<section v-if="noHeader">
+				<router-view />
 			</section>
-
-			<!-- <HelloWorld msg="Vite + Vue" /> -->
-			<footer>푸터입니다</footer>
+			<section v-else>
+				<header>헤더입니다</header>
+				<section class="mainSection">
+					<section class="mainContainer">
+						<router-view />
+					</section>
+				</section>
+				<footer>푸터입니다</footer>
+			</section>
 		</v-main>
 	</v-app>
 </template>
