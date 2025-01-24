@@ -2,7 +2,7 @@ const common = {
 	namespaced: true,
 	// 실제로 취급해야하는 각각의 data(==data)
 	state: {
-		alert: { state: false, alertMessage: '' },
+		alert: { state: false, message: '', isAlert: false, confirmEvent: '', confirmType: '' },
 	},
 	// 계산된 상태를 만들어내는 개념(==computed)
 	getters: {

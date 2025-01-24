@@ -5,4 +5,8 @@ function test(payload) {
 
 	return console.log('테스트입니다.');
 }
-export { test };
+function login(payload) {
+	const result = createInstance('/login', payload, {}, 'json').post();
+	return result.then(res => res.data).catch(err => console.log(err));
+}
+export { test, login };
