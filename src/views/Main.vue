@@ -35,13 +35,30 @@ const goToModal = () => {
 	modalopen.value = !modalopen.value;
 	console.log('모달오픈', modalopen.value);
 };
-const goAlert = () => {
-	store.commit('common/setAlert', { state: true, message: '1.' });
+const goAlert = text => {
+	store.commit('common/setAlert', { state: true, message: text, isAlert: true });
 };
+const goConfirm = () => {
+	store.commit('common/setAlert', { state: true, message: '이건 컨펌입니다.', isAlert: false, confirmEvent: 'sample' });
+};
+
+watch(
+	() => getAlert.value,
+	() => {
+		console.log('바뀌었습니다', getAlert.value);
+		if (getAlert.value.confirmType === 'submit') {
+			setTimeout(() => {
+				goAlert('저는 이벤트입니다.');
+			}, 400);
+		}
+	},
+	{ deep: true },
+);
 </script>
 <template>
 	<section>
-		<v-btn @click="goAlert">알럿 호출</v-btn>
+		<v-btn @click="goAlert('이건 알럿입니다.')">알럿 호출</v-btn>
+		<v-btn @click="goConfirm">컨펌 호출</v-btn>
 		123{{ getSample }}
 		<input type="text" v-model="getSample" />
 		<div>메인 화면입니다.{{ route.params }}</div>
