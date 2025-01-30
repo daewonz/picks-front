@@ -6,6 +6,8 @@ import ModalTemplate from '@/components/modal/ModalTemplate.vue';
 import { getPopupOpt } from '@/utils/modal';
 import SampleComponents from '@/components/sample/sampleComponents.vue';
 import SampleComponents2 from '@/components/sample/sampleComponents2.vue';
+import Button from '@/components/ui/Button.vue';
+import ProductList from '@/components/product/ProductList.vue';
 const { proxy } = getCurrentInstance();
 const store = useStore();
 const router = useRouter();
@@ -57,6 +59,10 @@ watch(
 </script>
 <template>
 	<section>
+		<div>TODO리스트</div>
+		<div>버튼에 아이콘 넣기</div>
+		<div>컴포넌트 상품 리스트, 공지사항, 등등으로 분리</div>
+		<div>장바구니 store에서 전역적으로 관리</div>
 		<v-btn @click="goAlert('이건 알럿입니다.')">알럿 호출</v-btn>
 		<v-btn @click="goConfirm">컨펌 호출</v-btn>
 		123{{ getSample }}
@@ -66,15 +72,12 @@ watch(
 		<div>
 			<button @click="goToModal">모달열기(작업중)</button>
 		</div>
+		<Button text="ㅎㅇ" type="green" size="small" />
+		<Button icon="mdi-cart" @click="goConfirm" type="green" size="small" />
 		<ModalTemplate :modalopen="modalopen" />
 		<SampleComponents />
 		<SampleComponents2 />
-		<SampleComponents2 />
-		<SampleComponents2 />
-		<SampleComponents2 />
-		<SampleComponents2 />
-		<SampleComponents2 />
-		<SampleComponents2 />
+		<ProductList />
 	</section>
 </template>
 <style lang="scss"></style>
