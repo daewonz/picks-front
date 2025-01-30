@@ -4,6 +4,7 @@ import { ref, watch, getCurrentInstance } from 'vue';
 import { createRouter } from 'vue-router';
 import { useRouter, useRoute } from 'vue-router';
 import Alert from './components/common/Alert.vue';
+import Header from './views/common/Header.vue';
 const router = useRouter();
 const route = useRoute();
 import HelloWorld from './components/HelloWorld.vue';
@@ -29,46 +30,66 @@ watch(route, () => {
 			<section v-if="noHeader">
 				<router-view />
 			</section>
-			<section v-else>
-				<header>헤더입니다</header>
+			<section v-else class="main-wrapper">
+				<Header class="header" />
 				<section class="mainSection">
-					<section class="mainContainer">
-						<router-view />
-					</section>
+					<router-view />
 				</section>
-				<footer>푸터입니다</footer>
+				<!-- 푸터는 필요할 시 사용 -->
+				<!-- <footer>푸터입니다</footer> -->
 			</section>
 		</v-main>
 	</v-app>
 </template>
 
 <style lang="scss">
+/* 기본 모드 (라이트 모드) */
+:root {
+	--font-primary: 'Noto Sans KR', sans-serif;
+	--color-primary: #42b883;
+	--color-secondary: #35495e;
+	--color-bg: #f9f9f9;
+	--color-text: #333;
+	--color-footer-bg: #222;
+	--color-footer-text: #fff;
+	--color-header-bg: #dff9f0; /* 헤더의 밝은 색상 */
+	--color-header-text: #222; /* 헤더 텍스트 */
+}
+
+/* 다크 모드 스타일 */
+:root.dark-mode {
+	--color-primary: #62d4a3; /* 약간 밝은 톤으로 */
+	--color-secondary: #3a3f47;
+	--color-bg: #5f5f5f;
+	--color-text: #e0e0e0;
+	--color-footer-bg: #1e1e1e;
+	--color-footer-text: #bbbbbb;
+	--color-header-bg: #3f6b59; /* 다크 모드 헤더의 밝은 색상 */
+	--color-header-text: #dac1c1; /* 헤더 텍스트 색상 */
+}
+.main-wrapper {
+	display: flex; /* Flexbox 사용 */
+	flex-direction: column; /* 수직 정렬 */
+	justify-content: center; /* 수직 중앙 정렬 */
+	align-items: center; /* 수평 중앙 정렬 */
+	min-height: 100vh; /* 화면 전체 높이 */
+	background-color: var(--color-bg);
+}
 .mainSection {
+	background-color: var(--color-bg);
+	color: var(--color-text);
+	display: grid;
 	height: 100vh;
 	max-height: 100vh;
-	.mainHeader {
-		min-width: v-bind('container');
-	}
-	.mainContainer {
-		height: 100vh;
-		max-height: 100vh;
-		display: flex;
-		min-width: v-bind('container');
-		.mainContents {
-			width: 100%;
-			min-width: 1380px;
-			margin-left: v-bind('margin');
-			margin-right: v-bind('margin');
-			padding: 80px 30px 20px 240px;
-			transition: 0.3s padding ease-in-out;
-			height: 100vh;
-			max-height: 100vh;
-			&.mainActive {
-				min-width: 1220px;
-				padding: 80px 30px 20px 80px;
-			}
-		}
-	}
+	justify-content: center; /* 수평 중앙 정렬 */
+}
+.header {
+	background-color: var(--color-header-bg);
+	color: var(--color-header-text);
+	display: flex; /* Flexbox 사용 */
+	justify-content: center; /* 수평 중앙 정렬 */
+	align-items: center; /* 수직 중앙 정렬 */
+	height: 100px; /* 높이 추가 (필요 시 조정) */
 }
 @font-face {
 	font-family: 'Noto Sans KR';
