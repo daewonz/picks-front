@@ -36,7 +36,7 @@ const cancel = () => {
 <template>
 	<div v-if="isAlert">
 		<v-dialog v-model="state" width="auto">
-			<v-card width="400" prepend-icon="mdi-checkbox-marked" :text="message" title="알림">
+			<v-card width="400" prepend-icon="mdi mdi-alert-circle-outline" :text="message" title="알림" class="alert">
 				<template v-slot:actions>
 					<v-btn class="ms-auto" text="확인" @click="state = false"></v-btn>
 				</template>
@@ -45,7 +45,7 @@ const cancel = () => {
 	</div>
 	<div v-else>
 		<v-dialog v-model="state" width="auto">
-			<v-card width="400" prepend-icon="mdi-checkbox-marked" :text="message" title="알림">
+			<v-card width="400" prepend-icon="mdi mdi-alert-circle-outline" :text="message" title="알림" class="confirm">
 				<template v-slot:actions>
 					<div>
 						<v-btn class="ms-auto" text="확인" @click="confirm"></v-btn>
@@ -56,4 +56,13 @@ const cancel = () => {
 		</v-dialog>
 	</div>
 </template>
-<style lang="scss"></style>
+<style lang="scss">
+html.dark-mode .confirm {
+	background-color: rgb(121, 118, 118);
+	color: white;
+}
+html.dark-mode .alert {
+	background-color: rgb(121, 118, 118);
+	color: white;
+}
+</style>
