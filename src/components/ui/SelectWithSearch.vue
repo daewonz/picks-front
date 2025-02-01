@@ -4,9 +4,9 @@ import Button from '@/components/ui/Button.vue';
 
 const searchItems = ref([{ title: 'Item 1' }, { title: 'Item 2' }, { title: 'Item 3' }, { title: 'Item 4' }]);
 const searchValue = ref([]);
-
+const searchParam = ref({ category: 'all', content: '' });
 const search = () => {
-	alert('zz');
+	console.log(searchParam.value);
 };
 </script>
 <template>
@@ -21,13 +21,14 @@ const search = () => {
 				</span>
 			</template>
 		</v-select> -->
-		<select class="select">
+		<select class="select" v-model="searchParam.category">
+			<option value="all">전체</option>
 			<option value="apple">apple</option>
 			<option value="orange">orange</option>
 			<option value="grape">grape</option>
 			<option value="melon">melon</option>
 		</select>
-		<input class="input" type="text" />
+		<input class="input" type="text" v-model="searchParam.content" @keyup.enter="search" />
 		<v-icon icon="mdi mdi-magnify" class="search-btn" @click="search" />
 	</section>
 </template>
