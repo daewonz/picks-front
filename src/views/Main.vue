@@ -6,6 +6,7 @@ import ModalTemplate from '@/components/modal/ModalTemplate.vue';
 import { getPopupOpt } from '@/utils/modal';
 import SampleComponents from '@/components/sample/sampleComponents.vue';
 import SampleComponents2 from '@/components/sample/sampleComponents2.vue';
+import EventSlider from '@/components/events/EventSlider.vue';
 import Button from '@/components/ui/Button.vue';
 import ProductList from '@/components/product/ProductList.vue';
 const { proxy } = getCurrentInstance();
@@ -63,6 +64,11 @@ watch(
 		<div>버튼에 아이콘 넣기</div>
 		<div>컴포넌트 상품 리스트, 공지사항, 등등으로 분리</div>
 		<div>장바구니 store에서 전역적으로 관리</div>
+		<div>상품 DB 설계(이름, 가격, 평점, 사진, 할인률, 타이틀, 판매자, 상품코드, 카테고리(FK))</div>
+		<div>유저 DB 설계(아이디, 비밀번호(암호화), 쿠폰, 캐시, 찜 )</div>
+		<div>카테고리 DB 설계 (PK, 카테고리)</div>
+		<div>이벤트 페이지 DB설계(PK, 상품코드(FK), 클릭 시 url??, 사진)</div>
+		<div></div>
 		<v-btn @click="goAlert('이건 알럿입니다.')">알럿 호출</v-btn>
 		<v-btn @click="goConfirm">컨펌 호출</v-btn>
 		123{{ getSample }}
@@ -75,8 +81,9 @@ watch(
 		<Button text="ㅎㅇ" type="green" size="small" />
 		<Button icon="mdi-cart" @click="goConfirm" type="green" size="small" />
 		<ModalTemplate :modalopen="modalopen" />
-		<SampleComponents />
-		<SampleComponents2 />
+		<EventSlider />
+		<!-- <SampleComponents />
+		<SampleComponents2 /> -->
 		<ProductList />
 	</section>
 </template>
