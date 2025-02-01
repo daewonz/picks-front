@@ -17,7 +17,8 @@ const toggleDarkMode = () => {
 <template>
 	<section class="main">
 		<div class="flex-item">
-			<img :src="isDarkMode ? '/logo-dark.png' : '/logo.png'" :alt="isDarkMode ? 'Dark Logo' : 'Light Logo'" />
+			<!-- <img :src="isDarkMode ? '/logo-dark.png' : '/logo.png'" :alt="isDarkMode ? 'Dark Logo' : 'Light Logo'" /> -->
+			<img src="/logo2.png" :alt="isDarkMode ? 'Dark Logo' : 'Light Logo'" width="100%" />
 		</div>
 		<div class="flex-item5"><SelectWithSearch /></div>
 		<div class="flex-item"><v-icon icon="mdi mdi-account" /></div>
