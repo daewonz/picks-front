@@ -48,11 +48,12 @@ watch(route, () => {
 	--font-primary: 'Noto Sans KR', sans-serif;
 	--color-primary: #42b883;
 	--color-secondary: #35495e;
-	--color-bg: #f9f9f9;
+	--color-bg: #ffffff;
 	--color-text: #333;
 	--color-footer-bg: #222;
 	--color-footer-text: #fff;
-	--color-header-bg: #dff9f0; /* 헤더의 밝은 색상 */
+	//--color-header-bg: #dff9f0; /* 헤더의 밝은 색상 */
+	--color-header-bg: #ffffff; /* 헤더의 밝은 색상 */
 	--color-header-text: #222; /* 헤더 텍스트 */
 }
 

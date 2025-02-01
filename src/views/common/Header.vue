@@ -46,6 +46,7 @@ const toggleDarkMode = () => {
 	align-items: center;
 	justify-content: space-between;
 	text-align: center;
+	border-bottom: solid 1px #c1c0c0;
 }
 html.dark-mode .main {
 	//background: white;
