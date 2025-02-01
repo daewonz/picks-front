@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 axios.defaults.withCredentials = true;
+//axios.xhrFields.withCredentials = true;
 axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 //vite 에서는 process.env 대신 import.meta.env.value 사용
 let baseURL = import.meta.env.VITE_VUE_APP_API_URI; //process.env.VUE_BASE_URL
@@ -15,12 +16,6 @@ if (import.meta.env.NODE_ENV === 'production') {
 } else {
 	baseURL = 'http://localhost:8080';
 }
-console.log('??', process.env.NODE_ENV);
-console.log('??22', import.meta.env.VITE_VUE_APP_API_URI);
-console.log('??33', baseURL);
-
-console.log('123412431', fullDomain);
-
 function createInstance(url, paramData, parmas, contentType, responseType) {
 	let resType;
 	responseType === undefined ? (resType = 'json') : (resType = responseType);
