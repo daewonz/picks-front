@@ -1,9 +1,12 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, computed, watch } from 'vue';
 import SelectWithSearch from '@/components/ui/SelectWithSearch.vue';
 import Button from '@/components/ui/Button.vue';
+import { useStore } from 'vuex';
+const store = useStore();
+const cart = computed(() => store.getters['shopping/getCart']);
 const isDarkMode = ref(false);
-const cartCount = 0; // 예시로 5개 들어갔다고 가정(카트)
+const cartCount = cart.value.cartCount; // 예시로 5개 들어갔다고 가정(카트)
 const toggleDarkMode = () => {
 	isDarkMode.value = !isDarkMode.value;
 	const root = document.documentElement;
