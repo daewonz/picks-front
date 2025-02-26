@@ -23,6 +23,7 @@
 		"sass": "^1.77.2",
 		"vue": "^3.4.21",
 		"vue-final-modal": "^3.4.11",
+		"vue-query": "^1.26.0",
 		"vue-router": "^4.3.2",
 		"vuetify": "^3.6.7",
 		"vuex": "^4.0.2",

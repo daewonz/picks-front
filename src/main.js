@@ -8,6 +8,7 @@ import store from './store';
 import { vfmPlugin } from 'vue-final-modal';
 import PrimeVue from 'primevue/config';
 import '@fortawesome/fontawesome-free/css/all.css';
+import { VueQueryPlugin } from 'vue-query';
 //import 'vue-final-modal/style.css';
 
 const app = createApp(App);
@@ -17,4 +18,5 @@ app.use(PortalVue);
 app.use(store);
 app.use(PrimeVue);
 app.use(vfmPlugin());
+app.use(VueQueryPlugin);
 app.mount('#app');
