@@ -1,4 +1,9 @@
 import axios from 'axios';
+import { onMounted, ref, watch, computed, getCurrentInstance } from 'vue';
+import store from '@/store'; // Vuex store import
+
+axios.defaults.withCredentials = true;
+const getAlert = computed(() => store.getters['common/getAlert']);
 
 axios.defaults.withCredentials = true;
 //axios.xhrFields.withCredentials = true;
@@ -50,12 +55,17 @@ function createInstance(url, paramData, parmas, contentType, responseType) {
 			return response;
 		},
 		function (error) {
+			store.commit('common/setAlert', {
+				state: true,
+				message: url + '에서 오류가 발생했습니다.' + error.message,
+				isAlert: true,
+			});
 			// store.commit('common/setLoading', { status: false, info: '' });
 			// store.commit('common/setAlert', { status: true, info: error.message });
 			// //에러시 카운트 초기화
 			// store.commit('common/setApiCount', { resCount: 0, callCount: 0 });
-			deleteCookie('member');
-			deleteCookie('isLogin');
+			//deleteCookie('member');
+			//deleteCookie('isLogin');
 			// deleteCookie('alimtalkProvider');
 			// router.push('/Login');
 			if (error.response && error.response.data) {
